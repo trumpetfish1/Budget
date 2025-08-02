@@ -2,6 +2,7 @@ const depositIntoEnvelope = document.getElementById('depositIntoEnvelope');
 const envelope = document.getElementById('envelope');
 const amount = document.getElementById('amount');
 
+const envelopeContainer = document.getElementById('envelopes-container');
 
 console.log(amount.value)
 
@@ -17,12 +18,31 @@ console.log(amount.value)
 //     });
 
 
+const resetEnvelopes = () => {
+  envelopeContainer.innerHTML = '';
+}
+
+const renderEnvelopes = (envelopes = []) => {
+    resetEnvelopes();
+    if (envelopes.length > 0) {
+    envelopes.forEach(envelope => {
+        const newEnvelope = document.createElement('div');
+        newEnvelope.className = 'single-envelope';
+        newEnvelope.innerHTML = `<div class="envelope-name">${envelope.envelope}</div>
+        <div class="amount">- ${envelope.amount}</div>`;
+        envelopeContainer.appendChild(newEnvelope);
+    });
+    } else {
+    envelopeContainer.innerHTML = '<p>Your request returned no envelopes.</p>';
+    }
+}
+
 depositIntoEnvelope.addEventListener('click', () => {
- 
     fetch(`/api/envelopes?envelope=${envelope.value}&amount=${amount.value}`, { method: 'POST', })
         .then(res => res.json())
         .then(data => {
             console.log('Fetched data:', data);
+            renderEnvelopes(data.envelopes)
         })
         .catch(err => {
             console.error('Error fetching:', err);

@@ -10,11 +10,16 @@ envelopesRouter.get('/', (req, res, next) => {
 })
 
 envelopesRouter.post('/', (req, res, next) => {
-    newEnvelope = req.query.envelope
-    newAmount = req.query.amount
-     envelopes.push( { envelope: newEnvelope, amount: newAmount })
+    newEnvelope = String(req.query.envelope)
+    newAmount = Number(req.query.amount)
+    const existing = envelopes.find(e => e.envelope === newEnvelope);
+    if (existing) {
+        existing.amount += newAmount
+    } else {
+    envelopes.push({ envelope: newEnvelope, amount: newAmount })
+    }
     res.send({envelopes})
 })
 
- 
+
 module.exports = envelopesRouter;
