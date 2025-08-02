@@ -1,14 +1,33 @@
 const depositIntoEnvelope = document.getElementById('depositIntoEnvelope');
+const envelope = document.getElementById('envelope');
+const amount = document.getElementById('amount');
 
-console.log('attached')
+
+console.log(amount.value)
+
+// depositIntoEnvelope.addEventListener('click', () => {
+//     fetch('/api/envelopes')
+//         .then(res => res.json())
+//         .then(data => {
+//             console.log('Fetched data:', data);
+//         })
+//         .catch(err => {
+//             console.error('Error fetching:', err);
+//         });
+//     });
+
 
 depositIntoEnvelope.addEventListener('click', () => {
-        console.log('hi')
-});
-
-
-module.exports 
-
+ 
+    fetch(`/api/envelopes?envelope=${envelope.value}&amount=${amount.value}`, { method: 'POST', })
+        .then(res => res.json())
+        .then(data => {
+            console.log('Fetched data:', data);
+        })
+        .catch(err => {
+            console.error('Error fetching:', err);
+        });
+    });
 
 
 // const submitButton = document.getElementById('submit-quote');

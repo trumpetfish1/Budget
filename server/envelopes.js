@@ -1,12 +1,20 @@
 const envelopesRouter = require('express').Router();
 
-module.exports = envelopesRouter;
 
 const { envelopes } = require('./data')
 
-console.log('asd')
 
 envelopesRouter.get('/', (req, res, next) => {
-    console.log( envelopes)
-    res.send(envelopes)
+    console.log('return from get')
+    res.send({envelopes})
 })
+
+envelopesRouter.post('/', (req, res, next) => {
+    newEnvelope = req.query.envelope
+    newAmount = req.query.amount
+     envelopes.push( { envelope: newEnvelope, amount: newAmount })
+    res.send({envelopes})
+})
+
+ 
+module.exports = envelopesRouter;

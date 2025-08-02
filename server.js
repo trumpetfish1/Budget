@@ -8,8 +8,8 @@ const PORT = 4001;
 
 // Add middleware for handling CORS requests from index.html
 const cors = require('cors');
-//app.use(cors());
- 
+app.use(cors());
+
 
 // Add middware for parsing request bodies here:
 const bodyParser = require('body-parser');
