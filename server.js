@@ -9,7 +9,7 @@ const PORT = 4001;
 // Add middleware for handling CORS requests from index.html
 const cors = require('cors');
 //app.use(cors());
-console.log(cors)
+ 
 
 // Add middware for parsing request bodies here:
 const bodyParser = require('body-parser');
@@ -28,4 +28,3 @@ app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
- 

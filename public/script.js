@@ -1,31 +1,28 @@
-const depositToEnvelope = document.getElementById('depositIntoEnvelope');
+const depositIntoEnvelope = document.getElementById('depositIntoEnvelope');
 
 console.log('attached')
 
-depositToEnvelope.addEventListener('click', () => {
-    const envelope = document.getElementById('envelope').value;
-    const income = document.getElementById('income').value;
-    fetch('/api/envelopes', { 
-        method: 'GET'})
-    .then(response => {
-            console.log('fetch', response)
-    });
+depositIntoEnvelope.addEventListener('click', () => {
+        console.log('hi')
 });
 
 
+module.exports 
 
 
 
 // const submitButton = document.getElementById('submit-quote');
 // const newQuoteContainer = document.getElementById('new-quote');
 
-submitButton.addEventListener('click', () => {
-  const quote = document.getElementById('quote').value;
-  const person = document.getElementById('person').value;
+// submitButton.addEventListener('click', () => {
+//     const quote = document.getElementById('quote').value;
+//     const person = document.getElementById('person').value;
 
-  fetch(`/api/quotes?quote=${quote}&person=${person}`, {
-    method: 'POST',
-  })
+//     fetch(`/api/quotes?quote=${quote}&person=${person}`, {
+//     method: 'POST',
+//     })
+
+
 //   .then(response => response.json())
 //   .then((quote) => {
 //     const newQuote = document.createElement('div');
